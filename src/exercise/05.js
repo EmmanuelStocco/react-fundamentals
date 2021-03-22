@@ -16,9 +16,10 @@ import '../box-styles.css'
 //const mediumBox = <div className = "box box--medium" style= {{backgroundColor: 'pink', fontStyle:'italic'}}>medium pink box</div>
 //const largeBox = <div className = "box box--large" style= {{backgroundColor: 'orange', fontStyle:'italic'}}>large orange box</div>
 
-function Box ({className, style, ...props}){
- return <div className={"box " + className} style={{fontStyle: 'italic', ...style}}{...props}></div>
-
+function Box ({color = 'lightblue', style = {}, size = 'medium', ...props}){
+ const className = 'box box--' + size //concatenação 
+ return <div className={className} style={{fontStyle: 'italic', backgroundColor: color, ...style}}
+ {...props}></div>
 }
 
 function App() {
@@ -30,9 +31,10 @@ function App() {
         {/*chaves de fora são interpolação - valor onde escrever o valor de uma var */}
         {/* chave de dentro limites de objetos } */}
         <div style={{ marginTop: '20px', backgroundColor: 'blue'} }>Teste</div>
-       <Box className="box--small" style={{backgroundColor: 'lightblue'}}>Smal Light Blue Box </Box>
-       <Box className="box--medium" style={{backgroundColor: 'pink'}}>Medium Pink</Box>
-       <Box className="box--large" style={{backgroundColor: 'orange'}}>Large Orange </Box>
+       <Box size="small" style={{backgroundColor: 'lightblue'}}>Smal Light Blue Box </Box>
+       <Box style={{backgroundColor: 'pink'}}>Medium Pink</Box>
+       <Box size="large" style={{backgroundColor: 'orange'}}>Large Orange </Box>
+       <Box />
     </div>
   )
 }
